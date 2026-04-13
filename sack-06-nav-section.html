@@ -1,0 +1,91 @@
+<!-- Sack ($15) — Page Section: Disclosure Navigation -->
+<!-- A nav that reveals itself on scroll, hides when not needed -->
+
+<style>
+  .disclosure-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    transform: translateY(-100%);
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    font-family: system-ui, sans-serif;
+  }
+
+  .disclosure-nav.visible {
+    transform: translateY(0);
+  }
+
+  .disclosure-nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 14px;
+  }
+</style>
+
+<nav class="disclosure-nav" id="navbar">
+  <div class="disclosure-nav-inner">
+    <span class="nav-logo">Logo</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  (function() {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          
+          // Show nav when scrolling up, hide when scrolling down
+          if (currentScrollY < lastScrollY || currentScrollY < 100) {
+            navbar.classList.add('visible');
+          } else {
+            navbar.classList.remove('visible');
+          }
+          
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+</script>
+
+<!-- Features:
+     - Auto-hides on scroll down, reveals on scroll up
+     - Backdrop blur for modern glass effect
+     - RequestAnimationFrame for performance
+     - No dependencies
+-->

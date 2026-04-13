@@ -1,0 +1,76 @@
+<!-- Sack ($15) — Page Section: Bento Card Grid -->
+<!-- A dense, irregular grid of cards — never boring, never uniform -->
+
+<style>
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.bento-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 24px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-card:nth-child(1) { grid-column: span 2; background: #ff6b6b; }
+.bento-card:nth-child(2) { grid-row: span 2; background: #4ecdc4; }
+.bento-card:nth-child(3) { background: #ffe66d; color: #1a1a1a; }
+.bento-card:nth-child(4) { grid-column: span 2; background: #95e1d3; color: #1a1a1a; }
+.bento-card:nth-child(5) { background: #f38181; }
+.bento-card:nth-child(6) { grid-column: span 2; background: #aa96da; }
+
+.bento-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.bento-content {
+  font-size: 24px;
+  font-weight: 500;
+}
+</style>
+
+<div class="bento-grid">
+  <div class="bento-card">
+    <span class="bento-label">Feature</span>
+    <span class="bento-content">Big idea here</span>
+  </div>
+  <div class="bento-card">
+    <span class="bento-label">Tall</span>
+    <span class="bento-content">Vertical emphasis</span>
+  </div>
+  <div class="bento-card">
+    <span class="bento-label">Small</span>
+    <span class="bento-content">Quick hit</span>
+  </div>
+  <div class="bento-card">
+    <span class="bento-label">Wide</span>
+    <span class="bento-content">Horizontal narrative</span>
+  </div>
+  <div class="bento-card">
+    <span class="bento-label">Single</span>
+    <span class="bento-content">One thing</span>
+  </div>
+  <div class="bento-card">
+    <span class="bento-label">Final</span>
+    <span class="bento-content">Closing statement</span>
+  </div>
+</div>
+
+<!-- Features:
+     - Irregular grid breaks monotony
+     - Color-coded by size/function
+     - CSS Grid, no JS
+     - Responsive collapses to 2-col then 1-col
+-->

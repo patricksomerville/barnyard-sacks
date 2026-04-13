@@ -1,0 +1,42 @@
+<!-- Little Sack ($5) — Micro Component: Magnetic Button -->
+<!-- A button that subtly pulls toward your cursor -->
+
+<style>
+.magnetic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.magnetic-btn:hover {
+  background: #333;
+}
+</style>
+
+<button class="magnetic-btn" id="magnetic">Hover Me</button>
+
+<script>
+const btn = document.getElementById('magnetic');
+btn.addEventListener('mousemove', (e) => {
+  const rect = btn.getBoundingClientRect();
+  const x = e.clientX - rect.left - rect.width / 2;
+  const y = e.clientY - rect.top - rect.height / 2;
+  btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+});
+
+btn.addEventListener('mouseleave', () => {
+  btn.style.transform = 'translate(0, 0)';
+});
+</script>
+
+<!-- Usage: Drop into any page. Works standalone. -->

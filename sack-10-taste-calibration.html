@@ -1,0 +1,202 @@
+<!-- Big Sack ($50) — Taste Calibration System -->
+<!-- 2030 value: The ability to evaluate without explaining becomes the scarce skill. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taste Calibration</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      padding: 60px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 48px;
+    }
+    .calibration-exercise {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .exercise-number {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .exercise-prompt {
+      font-size: 20px;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .option {
+      background: #f5f5f5;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .option:hover {
+      border-color: #ddd;
+    }
+    .option.selected-good {
+      background: #f0f9f0;
+      border-color: #95e1d3;
+    }
+    .option.selected-bad {
+      background: #fff0f0;
+      border-color: #f38181;
+    }
+    .option-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .option-text {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .reveal {
+      background: #1a1a1a;
+      color: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .reveal-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #999;
+      margin-bottom: 8px;
+    }
+    .reveal-text {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .scoring {
+      display: flex;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid #e5e5e5;
+    }
+    .score-card {
+      flex: 1;
+      text-align: center;
+      padding: 24px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+    }
+    .score-number {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .score-label {
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Taste Calibration</h1>
+  <p class="subtitle">By 2030, taste is the only skill that matters. This trains it.</p>
+  
+  <div class="calibration-exercise">
+    <div class="exercise-number">Exercise 01 / 20</div>
+    <div class="exercise-prompt">Which headline converts better for a productivity tool?</div>
+    
+    <div class="comparison">
+      <div class="option selected-good">
+        <div class="option-label">Option A</div>
+        <div class="option-text">"The 10-minute system that made me quit my second job"</div>
+      </div>
+      <div class="option selected-bad">
+        <div class="option-label">Option B</div>
+        <div class="option-text">"Revolutionary AI-powered productivity solution"</div>
+      </div>
+    </div>
+    
+    <div class="reveal">
+      <div class="reveal-label">Why A works</div>
+      <div class="reveal-text">Specific outcome (quit second job), time-boxed (10 minutes), personal narrative. B is generic slop that says nothing. By 2030, everyone recognizes Option B as AI-generated filler. Option A has the texture of human experience.</div>
+    </div>
+  </div>
+  
+  <div class="calibration-exercise">
+    <div class="exercise-number">Exercise 02 / 20</div>
+    <div class="exercise-prompt">Which landing page layout creates more trust?</div>
+    
+    <div class="comparison">
+      <div class="option selected-good">
+        <div class="option-label">Option A</div>
+        <div class="option-text">Asymmetric grid, one oversized headline, minimal color, no faces</div>
+      </div>
+      <div class="option selected-bad">
+        <div class="option-label">Option B</div>
+        <div class="option-text">3-column feature grid, stock photos, "trusted by" logos, bright CTA buttons</div>
+      </div>
+    </div>
+    
+    <div class="reveal">
+      <div class="reveal-label">Why A works</div>
+      <div class="reveal-text">By 2030, the "startup landing page" pattern is completely exhausted. Asymmetry signals human curation. The lack of faces acknowledges that trust no longer comes from testimonials. Option B screams "template" and "untrustworthy."</div>
+    </div>
+  </div>
+  
+  <div class="scoring">
+    <div class="score-card">
+      <div class="score-number">12/20</div>
+      <div class="score-label">Current Level</div>
+    </div>
+    <div class="score-card">
+      <div class="score-number">15/20</div>
+      <div class="score-label">Marketable Taste</div>
+    </div>
+    <div class="score-card">
+      <div class="score-number">18/20</div>
+      <div class="score-label">Ghost Curator</div>
+    </div>
+  </div>
+  
+  <div style="margin-top: 48px; padding: 24px; background: #f5f5f5; border-radius: 8px; font-size: 14px; color: #666; line-height: 1.6;">
+    <strong>The 2030 Premise:</strong> Everyone can generate infinite content. Few can evaluate it. Taste calibration becomes the difference between commodity slop and curated artifacts. This system doesn't teach you why — it trains your gut.
+  </div>
+</body>
+</html>
+
+<!-- 2030 Value Proposition:
+     - By 2030, AI makes generation infinite
+     - Curation becomes the scarce resource
+     - This trains the ability to evaluate without explaining
+     - The exercises are timeless but the framing is forward-looking
+     - Customer buys a system for developing taste, not just content
+     - Positions them ahead of the curve (taste is 2030's currency)
+-->

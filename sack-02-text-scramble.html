@@ -1,0 +1,37 @@
+<!-- Little Sack ($5) — Micro Component: Text Scramble Reveal -->
+<!-- Text that decodes from random characters on hover -->
+
+<style>
+.scramble-text {
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+  color: #1a1a1a;
+  cursor: default;
+}
+</style>
+
+<span class="scramble-text" data-text="DECODE ME">DECODE ME</span>
+
+<script>
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const element = document.querySelector('.scramble-text');
+const originalText = element.dataset.text;
+
+element.addEventListener('mouseenter', () => {
+  let iterations = 0;
+  const interval = setInterval(() => {
+    element.innerText = originalText
+      .split('')
+      .map((letter, index) => {
+        if (index < iterations) return originalText[index];
+        return chars[Math.floor(Math.random() * chars.length)];
+      })
+      .join('');
+    
+    if (iterations >= originalText.length) clearInterval(interval);
+    iterations += 1/3;
+  }, 30);
+});
+</script>
+
+<!-- Usage: Add data-text attribute with target text. Hover to decode. -->

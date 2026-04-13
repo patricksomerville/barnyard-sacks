@@ -1,0 +1,204 @@
+<!-- Big Sack ($50) — Curation Interface: The Slop Sorter -->
+<!-- 2030 value: Curation becomes the scarce resource. This is the tool for it. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curation Interface</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      padding: 40px;
+    }
+    .curator-grid {
+      display: grid;
+      grid-template-columns: 250px 1fr 300px;
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+      min-height: 80vh;
+    }
+    .source-column {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #e5e5e5;
+    }
+    .column-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .slop-item {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      cursor: grab;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .slop-item:hover {
+      border-color: #ddd;
+    }
+    .slop-item.tagged {
+      background: #e8f4f8;
+      border-color: #4ecdc4;
+    }
+    .slop-item.discarded {
+      opacity: 0.4;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 6px;
+      background: #1a1a1a;
+      color: white;
+      border-radius: 3px;
+      font-size: 10px;
+      margin-left: 8px;
+    }
+    .eval-column {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #e5e5e5;
+    }
+    .eval-card {
+      background: #fafafa;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .eval-prompt {
+      font-size: 14px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .eval-score {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .score-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+    .score-btn:hover { background: #f5f5f5; }
+    .score-btn.active { background: #1a1a1a; color: white; }
+    .keep-column {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #e5e5e5;
+    }
+    .kept-item {
+      background: #f0f9f0;
+      border: 2px solid #95e1d3;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid #e5e5e5;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stats {
+      font-size: 13px;
+      color: #666;
+    }
+    .export-btn {
+      padding: 12px 24px;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="curator-grid">
+    <div class="source-column">
+      <div class="column-title">Source Slop (47)</div>
+      <div class="slop-item">Blog post draft v1 <span class="tag">GPT</span></div>
+      <div class="slop-item">Hero image concept <span class="tag">IMG</span></div>
+      <div class="slop-item">Email sequence outline <span class="tag">CLD</span></div>
+      <div class="slop-item tagged">Landing page copy <span class="tag">GPT</span></div>
+      <div class="slop-item discarded">Twitter thread attempt 1 <span class="tag">GPT</span></div>
+      <div class="slop-item">Product description <span class="tag">CLD</span></div>
+    </div>
+    
+    <div class="eval-column">
+      <div class="column-title">Taste Evaluation</div>
+      <div class="eval-card">
+        <div class="eval-prompt">"A landing page that converts without looking like every other SaaS"</div>
+        <div class="eval-score">
+          <button class="score-btn">1</button>
+          <button class="score-btn">2</button>
+          <button class="score-btn active">3</button>
+          <button class="score-btn">4</button>
+          <button class="score-btn">5</button>
+        </div>
+        <div style="font-size: 12px; color: #666;">Keep? <strong style="color: #4ecdc4;">YES</strong> — Has specific angle, avoids clichés</div>
+      </div>
+      
+      <div class="eval-card">
+        <div class="eval-prompt">"Revolutionary AI-powered solution"</div>
+        <div class="eval-score">
+          <button class="score-btn active">1</button>
+          <button class="score-btn">2</button>
+          <button class="score-btn">3</button>
+          <button class="score-btn">4</button>
+          <button class="score-btn">5</button>
+        </div>
+        <div style="font-size: 12px; color: #666;">Discard? <strong style="color: #f38181;">YES</strong> — Generic, meaningless</div>
+      </div>
+    </div>
+    
+    <div class="keep-column">
+      <div class="column-title">Curated (12)</div>
+      <div class="kept-item">Landing page copy</div>
+      <div class="kept-item">Hero image concept</div>
+      <div class="kept-item">Product description v2</div>
+      <div class="kept-item">Email opener</div>
+    </div>
+  </div>
+  
+  <div class="action-bar">
+    <div class="stats">47 raw → 12 curated (26% yield) | Time: 18 minutes</div>
+    <button class="export-btn">Export Curated Bundle</button>
+  </div>
+</body>
+</html>
+
+<!-- 2030 Value Proposition:
+     - Curation is the bottleneck, not production
+     - This interface turns 47 pieces of slop into 12 usable artifacts
+     - The "taste evaluation" is the actual valuable work
+     - Exportable as a system others can use
+     - By 2030, everyone has AI. Few have taste. This is taste infrastructure.
+-->
