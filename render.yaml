@@ -1,0 +1,40 @@
+services:
+  # Backend API Service
+  - type: web
+    name: barnyard-api
+    runtime: node
+    plan: free
+    branch: master
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SOLANA_RECEIVER
+        value: SOLPLACEHOLDER123
+      - key: BASE_RECEIVER
+        value: 0xBASEPLACEHOLDER
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health
+
+  # Frontend Static Site
+  - type: static
+    name: barnyard-app
+    plan: free
+    branch: master
+    rootDir: client/build
+    buildCommand: echo "Static build already complete"
+    publishPath: .
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: barnyard-api
+          property: url
+
+routes:
+  - type: rewrite
+    source: /api/*
+    destination: https://barnyard-api.onrender.com/api/*
