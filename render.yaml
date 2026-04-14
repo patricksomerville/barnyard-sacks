@@ -19,14 +19,15 @@ services:
         value: 10000
     healthCheckPath: /health
 
-  # Frontend Static Site - Builds from source
-  - type: static
+  # Frontend Static Site
+  - type: web
     name: barnyard-app
+    runtime: static
     plan: free
     branch: master
     rootDir: client
     buildCommand: npm ci && npm run build
-    publishPath: build
+    staticPublishPath: build
     envVars:
       - key: REACT_APP_API_URL
         fromService:
